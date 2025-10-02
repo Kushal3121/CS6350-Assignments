@@ -1,3 +1,8 @@
+# ------------------------------------------------------------------ Big Data Assignment 1 ----------------------------------------------------------------- #
+# Name - Kushal Choudhary
+# Net ID - kxc240000
+# --------------------------------------------------------- Movie Plot Search Engine using PySpark --------------------------------------------------------- #
+
 from pyspark import SparkContext
 import os, math, re, glob
 import nltk

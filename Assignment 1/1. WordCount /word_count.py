@@ -1,3 +1,8 @@
+# ------------------------------------------------------------------ Big Data Assignment 1 ----------------------------------------------------------------- #
+# Name - Kushal Choudhary
+# Net ID - kxc240000
+# ---------------------------------------------------------- Named Entity Recognition Word Count ----------------------------------------------------------- #
+
 from pyspark import SparkContext
 import os
 import spacy
@@ -33,7 +38,7 @@ entity_counts = entity_pairs.reduceByKey(lambda a, b: a + b)
 # Sort in descending order of frequency
 sorted_entities = entity_counts.sortBy(lambda x: x[1], ascending=False)
 
-# Collect & print top 20 results
+# Collect and print top 20 entities
 top_entities = sorted_entities.take(20)
 print("\n=== Top 20 Named Entities (Filtered) ===")
 for entity, count in top_entities:
