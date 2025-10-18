@@ -1,11 +1,5 @@
 # Naive Bayes Text Classification Algorithm
 
-**Author:** Kushal Choudhary  
-**Net ID:** kxc240000  
-**Dataset:** 20 Newsgroups (http://qwone.com/~jason/20Newsgroups/20news-bydate.tar.gz)
-
----
-
 ## Algorithm Overview
 
 This algorithm implements a Naive Bayes text classifier using MapReduce with Spark RDDs. It classifies documents into categories based on word occurrence probabilities, using Bayes' theorem with the naive independence assumption.
