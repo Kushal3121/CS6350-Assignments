@@ -133,6 +133,12 @@ if __name__ == "__main__":
     
     spark.stop()
 
+
+# Input:
+    # spark-submit recommend_friends.py \
+    # --input https://an-ml.s3.us-west-1.amazonaws.com/soc-LiveJournal1Adj.txt \
+    # --sample 10 --seed 42
+
 # Output:
     # FRIEND RECOMMENDATIONS
 
