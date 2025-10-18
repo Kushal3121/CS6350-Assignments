@@ -122,9 +122,7 @@ if __name__ == "__main__":
     
     results = recommendations.collect()
     
-    print("\n" + "="*60)
     print("FRIEND RECOMMENDATIONS")
-    print("="*60 + "\n")
     
     for user, recs in sorted(results, key=lambda x: int(x[0]) if x[0].isdigit() else x[0]):
         rec_list = ','.join([r[0] for r in recs])
@@ -136,9 +134,7 @@ if __name__ == "__main__":
     spark.stop()
 
 # Output:
-    # ============================================================
     # FRIEND RECOMMENDATIONS
-    # ============================================================
 
     # 25      1,2,3,4,5,6,7,8,9,10
     # 2203    2169,2199,0,21,98,543,575,1450,2119,2120
