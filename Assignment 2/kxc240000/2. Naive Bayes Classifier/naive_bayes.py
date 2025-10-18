@@ -113,7 +113,6 @@ if __name__ == "__main__":
     
     print("\nLoading documents...")
     
-    # Load from both train and test directories (they're in current directory now)
     all_docs = []
     
     train_dir = "20news-bydate-train"
@@ -133,7 +132,6 @@ if __name__ == "__main__":
             if os.path.isdir(item):
                 print(f"  Directory: {item}")
                 if '20news' in item:
-                    # Try to show subdirectories
                     subdirs = os.listdir(item)[:5]
                     print(f"    Contains: {subdirs}")
         exit(1)
