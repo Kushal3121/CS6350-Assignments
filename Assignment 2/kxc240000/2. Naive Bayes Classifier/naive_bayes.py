@@ -259,7 +259,6 @@ if __name__ == "__main__":
     spark.stop()
 
 # Input:
-    # spark-submit naive_bayes.py --input http://qwone.com/~jason/20Newsgroups/20news-bydate.tar.gz --test-split 0.2 --seed 42
 
 # Output:
     # Documents after preprocessing: 17463
