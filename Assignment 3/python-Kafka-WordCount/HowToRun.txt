@@ -1,0 +1,8 @@
+HOW TO RUN:
+
+1. Start Kafka as indicated https://kafka.apache.org/quickstart
+2. Create topic "test", send message
+3. Run the code file as:
+spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.1 structured_kafka_wordcount.py localhost:9092 subscribe test
+
+make sure packages argument matches your Spark and Scala environment. You can check Spark and Scala versions by seeing them on spark-shell
