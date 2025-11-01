@@ -65,12 +65,6 @@ kafka-topics --create --topic topic1 --bootstrap-server localhost:9092
 kafka-topics --create --topic topic2 --bootstrap-server localhost:9092
 ```
 
-### Verify topics
-
-```bash
-kafka-topics --list --bootstrap-server localhost:9092
-```
-
 ### 4. Start Elasticsearch
 
 ```bash
