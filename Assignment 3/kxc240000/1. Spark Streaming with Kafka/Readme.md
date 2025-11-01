@@ -44,43 +44,61 @@ pip install pyspark spacy confluent-kafka requests
 python -m spacy download en_core_web_sm
 ```
 
-# Steps to execute the assignment
+## Steps to execute the assignment
 
-# 1. Start Zookeeper
+### 1. Start Zookeeper
 
+```bash
 zookeeper-server-start config/zookeeper.properties
+```
 
-# 2. Start Kafka
+### 2. Start Kafka
 
+```bash
 kafka-server-start config/server.properties
+```
 
-# 3. Create Kafka Topics
+### 3. Create Kafka Topics
 
+```bash
 kafka-topics --create --topic topic1 --bootstrap-server localhost:9092
 kafka-topics --create --topic topic2 --bootstrap-server localhost:9092
+```
 
-# Verify topics
+### Verify topics
 
+```bash
 kafka-topics --list --bootstrap-server localhost:9092
+```
 
-# 4. Start Elasticsearch
+### 4. Start Elasticsearch
 
+```bash
 elasticsearch-full
+```
 
-# 5. Start Kibana
+### 5. Start Kibana
 
+```bash
 /opt/homebrew/opt/kibana-full/bin/kibana
+```
 
-# 6. Start the NewsAPI Producer
+### 6. Start the NewsAPI Producer
 
+```bash
 python newsapi_producer.py
+```
 
-# 7. Start the Spark Structured Streaming Job
+## 7. Start the Spark Structured Streaming Job
 
+```bash
 spark-submit \
  --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 \
  stream_ner_to_counts.py
+```
 
-# 8. Start Logstash (Kafka → Elasticsearch)
+### 8. Start Logstash (Kafka → Elasticsearch)
 
+```bash
 logstash -f logstash-kafka.conf
+```
