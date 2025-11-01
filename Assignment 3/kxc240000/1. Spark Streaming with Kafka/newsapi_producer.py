@@ -3,26 +3,24 @@ import json, time, requests
 from confluent_kafka import Producer
 
 # ---------- CONFIG ----------
-API_KEY   = "abfc3bfb8a7549c8b52c6d355eebd7a2"   # <-- your key
+API_KEY   = "abfc3bfb8a7549c8b52c6d355eebd7a2"   
 BOOTSTRAP = "localhost:9092"
 TOPIC     = "topic1"
 LANGUAGE  = "en"
-COUNTRY   = "us"   # change to "in", "gb", etc. if you want
+COUNTRY   = "us"   
 
-# ---------- SETUP ----------
 producer = Producer({"bootstrap.servers": BOOTSTRAP})
 NEWS_URL = f"https://newsapi.org/v2/top-headlines?country={COUNTRY}&language={LANGUAGE}&apiKey={API_KEY}"
 
 def delivery_report(err, msg):
     if err:
-        print(f"❌ Delivery failed: {err}")
+        print(f"Delivery failed: {err}")
     else:
-        print(f"✅ Sent to {msg.topic()} [p{msg.partition()}] @ offset {msg.offset()}")
+        print(f"Sent to {msg.topic()} [p{msg.partition()}] @ offset {msg.offset()}")
 
 print(f"🚀 Streaming live headlines from NewsAPI ({COUNTRY}) → Kafka:{TOPIC}")
 print("   (Press Ctrl+C to stop)\n")
 
-# ---------- MAIN LOOP ----------
 try:
     while True:
         try:
@@ -50,15 +48,15 @@ try:
                 producer.poll(0)
 
             producer.flush()
-            print(f"📰 Sent {len(articles)} new headlines at {time.strftime('%H:%M:%S')}\n")
+            print(f"Sent {len(articles)} new headlines at {time.strftime('%H:%M:%S')}\n")
             time.sleep(30)  # fetch new headlines every 30 sec
 
         except Exception as e:
-            print("⚠️ Error fetching/sending batch:", e)
+            print("Error fetching/sending batch:", e)
             time.sleep(15)
 
 except KeyboardInterrupt:
-    print("\n⏹️ Stopping stream...")
+    print("\nStopping stream...")
 finally:
     producer.flush()
-    print("✅ All pending messages delivered.")
+    print("All pending messages delivered.")

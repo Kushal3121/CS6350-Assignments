@@ -34,7 +34,7 @@ def main():
     )
     spark.sparkContext.setLogLevel("WARN")
 
-    # 1️⃣ Read from Kafka (real-time text source)
+    # 1. Read from Kafka (real-time text source)
     raw = (
         spark.readStream
         .format("kafka")
@@ -45,7 +45,7 @@ def main():
         .load()
     )
 
-    # 2️⃣ Parse JSON messages
+    # 2. Parse JSON messages
     schema = T.StructType([
         T.StructField("id", T.StringType()),
         T.StructField("author", T.StringType()),
@@ -55,14 +55,14 @@ def main():
     ])
     parsed = raw.select(F.from_json(F.col("value").cast("string"), schema).alias("j")).select("j.*")
 
-    # 3️⃣ Extract named entities using spaCy
+    # 3. Extract named entities using spaCy
     with_ents = parsed.withColumn("entities", extract_entities(F.col("text")))
 
-    # 4️⃣ Explode entities and count frequencies
+    # 4. Explode entities and count frequencies
     exploded = with_ents.select(F.explode(F.col("entities")).alias("entity"))
     counts = exploded.groupBy("entity").count().withColumnRenamed("count", "running_count")
 
-    # 5️⃣ Prepare output to Kafka topic2 as JSON
+    # 5. Prepare output to Kafka topic2 as JSON
     out = counts.select(
         F.to_json(
             F.struct(
@@ -73,7 +73,7 @@ def main():
         ).alias("value")
     )
 
-    # 6️⃣ Write continuous stream to Kafka
+    # 6. Write continuous stream to Kafka
     query = (
         out.writeStream
         .format("kafka")
@@ -85,7 +85,7 @@ def main():
         .start()
     )
 
-    # Optional: print entities to console for debugging
+    # Print entities to console for debugging
     debug_query = (
         counts.writeStream
         .outputMode("update")
