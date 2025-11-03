@@ -1,0 +1,39 @@
+=== CS 6350 Assignment 3: Graph Analysis ===
+
+Top 5 Nodes by OutDegree:
+      id  outDegree
+0    645       1801
+1    763       1669
+2    634       1621
+3  71399       1128
+4   3924        976
+
+Top 5 Nodes by InDegree:
+    id  inDegree
+0   18      3035
+1  143      1521
+2  737      1317
+3  790      1284
+4  136      1180
+
+Top 5 Nodes by PageRank:
+     id    pagerank
+0    18  345.137337
+1   737  240.253967
+2   118  162.020857
+3  1719  158.853456
+4   136  151.671223
+
+Top 5 Components (Largest):
+   component  count
+0          0  75877
+1      68603      2
+
+Top 5 Vertices by Triangle Count:
+   count   id
+0  48674  645
+1  47203   18
+2  25817   27
+3  25230  634
+4  24752   44
+
